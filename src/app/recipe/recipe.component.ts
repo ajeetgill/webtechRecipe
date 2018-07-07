@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeManagerService } from '../recipe-manager.service';
+import { Ingredient } from '../../classes/ingredient.class';
 
 @Component({
   selector: 'app-recipe',
@@ -10,12 +11,15 @@ export class RecipeComponent implements OnInit {
 
   btnName = 'Create Recipe';
   recInProg = false;  // true when recipe is being created.
+  selectedRecipe: string;
+  selectedRecipeArr: Array<Ingredient>;
 
   recName: string;
   recTime: number;
   ingName: string;
   ingQty: number;
   instruct: string;
+  recList: Array<string>; // stores the names of recipes from recipeManager.
   constructor(private recipeManager: RecipeManagerService = new RecipeManagerService()) { }
 
   createRec() {
@@ -26,6 +30,7 @@ export class RecipeComponent implements OnInit {
     : (this.btnName = 'Create Recipe');
     if (!this.recInProg) {
       this.recipeManager.saveRecipe(this.recName, this.recTime);  // saves the recipe.
+      this.recList = this.recipeManager.allRecipes();
     } else {
       this.recipeManager.newRecipe(); // makes a new recipe.
     }
@@ -47,6 +52,11 @@ export class RecipeComponent implements OnInit {
     this.instruct = '';
   }
 
+  printRec(val) {
+    this.selectedRecipe = val;
+    this.selectedRecipeArr = this.recipeManager.getRecipe(val);
+  }
+
   printConsole() {
     console.log('==============Recipe Created============');
     console.log('Recipe Name: ' + this.recName);
@@ -57,7 +67,6 @@ export class RecipeComponent implements OnInit {
     console.log('========================================');
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

@@ -1,0 +1,18 @@
+<div>
+  <h1>Fridge!!</h1>
+  <input [(ngModel)]="ingName" placeholder="Ingredient Name">
+  <input [(ngModel)]="ingQty" placeholder="Ingredient Qty">
+  <button (click)="addItem()">Add Ingredient</button>
+  <h1>Ingredients:</h1>
+  <ul>
+    <li *ngFor='let ing of fridgeManager.tempFridge.contents'>{{ing.name}} : {{ing.qty}} <button (click)="delItem(ing.name, ing.qty)">Delete</button></li>
+  </ul>
+  <!-- <div *ngIf="recInProg">
+      <input [(ngModel)]="recName" placeholder="Recipe Name">
+      <input [(ngModel)]="recTime" placeholder="Recipe Prep time">
+      <br>
+      <br>
+      <input [(ngModel)]="instruct" placeholder="Add instruciton here">
+      <button (click)="addInstruction()">Add Ingredient</button>
+    </div>     -->
+</div>

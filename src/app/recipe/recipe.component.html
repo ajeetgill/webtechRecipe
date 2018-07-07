@@ -11,3 +11,16 @@
   <input [(ngModel)]="instruct" placeholder="Add instruciton here">
   <button (click)="addInstruction()">Add Ingredient</button>
 </div>
+
+<div *ngIf="recList">
+  Recipe names
+  <select>
+    <option (click)="printRec(val)" *ngFor="let val of recList" value="">{{val}}</option>
+  </select>
+
+  <h1>{{selectedRecipe}}</h1>
+  <ul>
+    <li *ngFor='let ing of selectedRecipeArr'>{{ing.name}} : {{ing.qty}}</li>
+  </ul>
+
+</div>
