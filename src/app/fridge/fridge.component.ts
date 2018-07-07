@@ -22,6 +22,9 @@ export class FridgeComponent implements OnInit {
   delItem(itemName: string, itemQty: number) {
     this.fridgeManager.delItem(itemName, itemQty);
   }
+  // printItem(item: string) {
+  //   console.log(item);
+  // }
   ngOnInit() {
   }
 
