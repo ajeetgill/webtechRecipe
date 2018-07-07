@@ -1,26 +1,28 @@
-<button (click)="createRec()">{{btnName}}</button>
+<div>
+  <button (click)="createRec()">{{btnName}}</button>
 
-<div *ngIf="recInProg">
-  <input [(ngModel)]="recName" placeholder="Recipe Name">
-  <input [(ngModel)]="recTime" placeholder="Recipe Prep time">
-  <br>
-  <input [(ngModel)]="ingName" placeholder="Ingredient Name">
-  <input [(ngModel)]="ingQty" placeholder="Ingredient Qty">
-  <button (click)="addItem()">Add Ingredient</button>
-  <br>
-  <input [(ngModel)]="instruct" placeholder="Add instruciton here">
-  <button (click)="addInstruction()">Add Ingredient</button>
-</div>
+  <div *ngIf="recInProg">
+    <input [(ngModel)]="recName" placeholder="Recipe Name">
+    <input [(ngModel)]="recTime" placeholder="Recipe Prep time">
+    <br>
+    <input [(ngModel)]="ingName" placeholder="Ingredient Name">
+    <input [(ngModel)]="ingQty" placeholder="Ingredient Qty">
+    <button (click)="addItem()">Add Ingredient</button>
+    <br>
+    <input [(ngModel)]="instruct" placeholder="Add instruciton here">
+    <button (click)="addInstruction()">Add Ingredient</button>
+  </div>
 
-<div *ngIf="recList">
-  Recipe names
-  <select>
-    <option (click)="printRec(val)" *ngFor="let val of recList" value="">{{val}}</option>
-  </select>
+  <div *ngIf="recList">
+    Recipe names
+    <select>
+      <option (click)="printRec(val)" *ngFor="let val of recList" value="">{{val}}</option>
+    </select>
 
-  <h1>{{selectedRecipe}}</h1>
-  <ul>
-    <li *ngFor='let ing of selectedRecipeArr'>{{ing.name}} : {{ing.qty}}</li>
-  </ul>
+    <h1>{{selectedRecipe}}</h1>
+    <ul>
+      <li *ngFor='let ing of selectedRecipeArr'>{{ing.name}} : {{ing.qty}}</li>
+    </ul>
 
+  </div>
 </div>
